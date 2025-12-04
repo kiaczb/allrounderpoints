@@ -6,7 +6,7 @@ interface TableHeaderProps {
 
 export default function TableHeader({ competitionData }: TableHeaderProps) {
   return (
-    <thead className="bg-gray-200 dark:bg-gray-700 sticky top-0 z-10">
+    <thead className="bg-gray-200 dark:bg-gray-700 sticky top-0">
       <tr>
         <th className="border-b border-gray-300 dark:border-gray-600 px-3 py-3 text-left whitespace-nowrap">
           Helyezés
