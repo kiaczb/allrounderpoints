@@ -24,7 +24,7 @@ export default async function Home({ searchParams }: HomeProps) {
       <div className="mx-3 px-3 py-6 ">
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            All-Rounder Verseny Eredmények
+            All-Rounder Versenyek Eredményei
           </h1>
           <div className="flex items-center gap-4">
             <span className="text-gray-700 dark:text-gray-300">Év:</span>
