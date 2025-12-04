@@ -43,7 +43,7 @@ const ResultsTable = ({
 
   return (
     <div className={className}>
-      <div className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 max-h-[655px] overflow-y-auto">
+      <div className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 mb-20 overflow-y-auto">
         <table className="min-w-full text-sm sm:text-base border-collapse">
           <TableHeader competitionData={competitionData} />
           <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-300 dark:divide-gray-600">
