@@ -1,6 +1,6 @@
 // app/page.tsx
 import { allRounderIdsByYear, availableYears } from "../utils/competitionIds";
-import ResultsTable from "./components/PointsTable/ReultsTable";
+import ResultsTable from "./components/PointsTable/ResultsTable";
 import YearPicker from "./components/YearPicker";
 
 interface HomeProps {
