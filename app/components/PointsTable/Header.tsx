@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 interface TableHeaderProps {
   competitionData: {
     ids: Record<string, string>;
@@ -5,17 +7,18 @@ interface TableHeaderProps {
 }
 
 export default function TableHeader({ competitionData }: TableHeaderProps) {
+  const t = useTranslations("PointsTable");
   return (
     <thead className="bg-gray-200 dark:bg-gray-700 sticky top-0">
       <tr>
         <th className="border-b border-gray-300 dark:border-gray-600 px-3 py-3 text-left whitespace-nowrap">
-          Helyezés
+          {t("Ranking")}
         </th>
         <th className="border-b border-gray-300 dark:border-gray-600 px-3 py-3 text-center">
-          Név
+          {t("Name")}
         </th>
         <th className="border-b border-gray-300 dark:border-gray-600 px-3 py-3 text-left whitespace-nowrap">
-          Pontok
+          {t("Points")}
         </th>
         {Object.entries(competitionData.ids).map(
           ([competitionId, competitionName]) => (

@@ -1,0 +1,11 @@
+{
+  "Home": {
+    "Header": "All-Rounder Competition Results",
+    "YearPickerLabel": "Year:"
+  },
+  "PointsTable": {
+    "Ranking": "Ranking",
+    "Name": "Name",
+    "Points": "Points"
+  }
+}

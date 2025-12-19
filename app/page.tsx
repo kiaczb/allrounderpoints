@@ -1,4 +1,5 @@
 // app/page.tsx
+import { getTranslations } from "next-intl/server";
 import { allRounderIdsByYear, availableYears } from "../utils/competitionIds";
 import ModalWrapper from "./components/Modal/ModalWrapper";
 import ResultsTable from "./components/PointsTable/ResultsTable";
@@ -11,11 +12,11 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  // Alapértelmezett év: 2025 vagy URL-ből
+  const t = await getTranslations("Home");
+
   const params = await searchParams;
   const selectedYear = params.year || "2025";
 
-  // Kiválasztott év verseny adatai
   const competitionData =
     allRounderIdsByYear[selectedYear as keyof typeof allRounderIdsByYear] ||
     allRounderIdsByYear["2025"];
@@ -23,19 +24,21 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className="min-h-screen">
       <div className="mx-3 px-3 py-6 ">
-        <div>
-          <ModalWrapper />
-        </div>
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            All-Rounder Versenyek Eredményei
+            {t("Header")}
           </h1>
-          <div className="flex items-center gap-4">
-            <span className="text-gray-700 dark:text-gray-300">Év:</span>
-            <YearPicker
-              selectedYear={selectedYear}
-              availableYears={availableYears}
-            />
+          <div className="flex justify-between p-4">
+            <div className="flex items-center gap-4">
+              <span className="text-gray-700 dark:text-gray-300">
+                {t("YearPickerLabel")}
+              </span>
+              <YearPicker
+                selectedYear={selectedYear}
+                availableYears={availableYears}
+              />
+            </div>
+            <ModalWrapper />
           </div>
         </div>
         <ResultsTable competitionData={competitionData} className="w-full" />

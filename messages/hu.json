@@ -1,0 +1,11 @@
+{
+  "Home": {
+    "Header": "All-Rounder Versenyek Eredményei",
+    "YearPickerLabel": "Év:"
+  },
+  "PointsTable": {
+    "Ranking": "Helyezés",
+    "Name": "Név",
+    "Points": "Pontok"
+  }
+}
