@@ -1,5 +1,6 @@
 // app/page.tsx
 import { allRounderIdsByYear, availableYears } from "../utils/competitionIds";
+import ModalWrapper from "./components/Modal/ModalWrapper";
 import ResultsTable from "./components/PointsTable/ResultsTable";
 import YearPicker from "./components/YearPicker";
 
@@ -22,6 +23,9 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className="min-h-screen">
       <div className="mx-3 px-3 py-6 ">
+        <div>
+          <ModalWrapper />
+        </div>
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
             All-Rounder Versenyek Eredményei
