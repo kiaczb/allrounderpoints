@@ -7,5 +7,14 @@
     "Ranking": "Helyezés",
     "Name": "Név",
     "Points": "Pontok"
+  },
+  "Modal": {
+    "Title": "Helyezés",
+    "Rules": [
+      "Minden versenyszám első {POINTS_TABLE_LENGTH} helyezettje kap pontokat.",
+      "A sorozat végén a versenyzők legjobb {COUNTING_RESULTS} versenyszámának pontjait összesítve kapjuk meg a végleges rangsort.",
+      "A sorozat végén a pontverseny első {PODIUM_COUNT} helyezettét oklevéllel és Cuboss kuponkóddal díjazzuk."
+    ],
+    "Points": "Pontok"
   }
 }

@@ -9,7 +9,6 @@ import { AllRounderYearData } from "@/utils/competitionIds";
 
 const ResultsTable = ({
   competitionData,
-  className = "",
 }: {
   competitionData: AllRounderYearData;
   className?: string;
@@ -21,19 +20,19 @@ const ResultsTable = ({
   if (loading || getYearKeyForProps() !== currentYearKey) {
     return (
       <SkeletonTable
-        className={className}
+        className="w-full"
         competitionCount={Object.keys(competitionData.ids).length}
       />
     );
   }
 
   if (error) {
-    return <ErrorDisplay error={error} className={className} />;
+    return <ErrorDisplay error={error} className="w-full" />;
   }
 
   if (peopleArray.length === 0) {
     return (
-      <div className={`${className} p-8 text-center`}>
+      <div className={`full p-8 text-center`}>
         <div className="text-gray-500 dark:text-gray-400">
           Nincs megjeleníthető adat.
         </div>
@@ -42,7 +41,7 @@ const ResultsTable = ({
   }
 
   return (
-    <div className={className}>
+    <div className="w-full">
       <div className="overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-600 mb-20 overflow-y-auto">
         <table className="min-w-full text-sm sm:text-base border-collapse">
           <TableHeader competitionData={competitionData} />
