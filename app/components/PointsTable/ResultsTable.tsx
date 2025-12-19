@@ -11,7 +11,6 @@ const ResultsTable = ({
   competitionData,
 }: {
   competitionData: AllRounderYearData;
-  className?: string;
 }) => {
   const { peopleArray, loading, error, currentYearKey, getYearKeyForProps } =
     useCompetitionData(competitionData);

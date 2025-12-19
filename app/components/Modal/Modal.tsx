@@ -3,11 +3,17 @@
 import { useState, useTransition } from "react";
 import ModalWrapper from "./ModalWrapper";
 import { useTranslations } from "next-intl";
+import { AllRounderYearData } from "@/utils/competitionIds";
 
-const Modal = () => {
+const Modal = ({
+  competitionData,
+}: {
+  competitionData: AllRounderYearData;
+}) => {
   const t = useTranslations("Modal");
   const [open, setOpen] = useState(false);
-
+  const firstHalf = competitionData.POINTS_TABLE.slice(0, 10);
+  const secondHalf = competitionData.POINTS_TABLE.slice(10, 20);
   return (
     <>
       <button onClick={() => setOpen(true)}>
@@ -25,16 +31,47 @@ const Modal = () => {
 
       {open && (
         <ModalWrapper onClose={() => setOpen(false)}>
-          <div className="bg-red-400 dark:bg-gray-800 p-6 rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Modal cím</h2>
-            <p className="mb-4">Ez egy modal tartalom</p>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded shadow-lg">
+            <h2 className="text-xl font-bold mb-4">{t("Title")}</h2>
+            <ul className="list-disc ml-5 space-y-1">
+              <li>
+                {t("TopPositions", {
+                  POINTS_TABLE_LENGTH: competitionData.POINTS_TABLE.length,
+                })}
+              </li>
+              <li>
+                {t("CountingResults", {
+                  COUNTING_RESULTS: competitionData.COUNTING_RESULTS,
+                })}
+              </li>
+              <li>
+                {t("PodiumCount", {
+                  PODIUM_COUNT: competitionData.PODIUM_COUNT,
+                })}
+              </li>
+            </ul>
 
-            <button
-              onClick={() => setOpen(false)}
-              className="px-3 py-1 bg-gray-300 rounded"
-            >
-              Bezárás
-            </button>
+            <div className="mt-3 max-h-[20vh] overflow-y-auto">
+              <table className="w-full border border-gray-300 dark:border-gray-700 text-center">
+                <thead className="sticky top-0 bg-gray-200 dark:bg-gray-700">
+                  <tr>
+                    <th className="px-3 py-2 border-b">Place</th>
+                    <th className="px-3 py-2 border-b">Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {competitionData.POINTS_TABLE.map((point, index) => (
+                    <tr
+                      key={index}
+                      className="hover:bg-gray-100 dark:hover:bg-gray-600"
+                    >
+                      <td className="border-b">{index + 1}</td>
+                      <td className="border-b">{point}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </ModalWrapper>
       )}

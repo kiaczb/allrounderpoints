@@ -1,11 +1,18 @@
 {
   "Home": {
-    "Header": "All-Rounder Competition Results",
+    "Header": "All-Rounder Series Results",
     "YearPickerLabel": "Year:"
   },
   "PointsTable": {
     "Ranking": "Ranking",
     "Name": "Name",
+    "Points": "Points"
+  },
+  "Modal": {
+    "Title": "Rules",
+    "TopPositions": "The top {POINTS_TABLE_LENGTH} will receive points in each event.",
+    "CountingResults": "At the end of the series the final order will be decided based on the points awarded for each competitor's best {COUNTING_RESULTS} events.",
+    "PodiumCount": " At the end of the series the top {PODIUM_COUNT} highest-ranked people will receive certificates and Cuboss giftcards.",
     "Points": "Points"
   }
 }

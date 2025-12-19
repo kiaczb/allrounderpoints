@@ -30,7 +30,7 @@ export default async function Home({ searchParams }: HomeProps) {
               {t("Header")}
             </h1>
 
-            <Modal />
+            <Modal competitionData={competitionData} />
           </div>
 
           <div className="flex items-center gap-4">
@@ -43,7 +43,7 @@ export default async function Home({ searchParams }: HomeProps) {
             />
           </div>
         </div>
-        <ResultsTable competitionData={competitionData} className="w-full" />
+        <ResultsTable competitionData={competitionData} />
       </div>
     </main>
   );
