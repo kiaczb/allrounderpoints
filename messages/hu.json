@@ -13,6 +13,17 @@
     "TopPositions": "Minden versenyszám első {POINTS_TABLE_LENGTH} helyezettje kap pontokat.",
     "CountingResults": "A sorozat végén a versenyzők legjobb {COUNTING_RESULTS} versenyszámának pontjait összesítve kapjuk meg a végleges rangsort.",
     "PodiumCount": "A sorozat végén a pontverseny első {PODIUM_COUNT} helyezettét oklevéllel és Cuboss kuponkóddal díjazzuk.",
-    "Points": "Pontok"
+    "Points": "pont",
+    "Positons": "{position}. hely"
+  },
+  "ResultsTable": {
+    "NoData": "Nincs megjeleníthető adat."
+  },
+  "EventCell": {
+    "NoResult": "Nincs eredmény",
+    "Positons": "{position}. hely"
+  },
+  "Errors": {
+    "FetchError": " Hiba történt az adatok betöltése közben:"
   }
 }

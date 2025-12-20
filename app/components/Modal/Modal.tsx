@@ -31,8 +31,8 @@ const Modal = ({
 
       {open && (
         <ModalWrapper onClose={() => setOpen(false)}>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-4">{t("Title")}</h2>
+          <div className="bg-white dark:bg-gray-800 px-6 py-4 rounded shadow-lg">
+            <h2 className="text-xl font-bold mb-2">{t("Title")}</h2>
             <ul className="list-disc ml-5 space-y-1">
               <li>
                 {t("TopPositions", {
@@ -51,26 +51,38 @@ const Modal = ({
               </li>
             </ul>
 
-            <div className="mt-3 max-h-[20vh] overflow-y-auto">
-              <table className="w-full border border-gray-300 dark:border-gray-700 text-center">
-                <thead className="sticky top-0 bg-gray-200 dark:bg-gray-700">
-                  <tr>
-                    <th className="px-3 py-2 border-b">Place</th>
-                    <th className="px-3 py-2 border-b">Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {competitionData.POINTS_TABLE.map((point, index) => (
-                    <tr
-                      key={index}
-                      className="hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      <td className="border-b">{index + 1}</td>
-                      <td className="border-b">{point}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="mt-3 max-h-[45vh] overflow-y-auto">
+              <div className="grid grid-cols-2 gap-x-6 text-center">
+                {/* 1–10 */}
+                <div>
+                  {competitionData.POINTS_TABLE.slice(0, 10).map(
+                    (point, index) => (
+                      <p
+                        key={index}
+                        className="py-1 border-b border-gray-300 dark:border-gray-700"
+                      >
+                        {t("Positons", { position: index + 1 })} – {point}{" "}
+                        {t("Points", { count: point })}
+                      </p>
+                    )
+                  )}
+                </div>
+
+                {/* 11–20 */}
+                <div>
+                  {competitionData.POINTS_TABLE.slice(10, 20).map(
+                    (point, index) => (
+                      <p
+                        key={index + 10}
+                        className="py-1 border-b border-gray-300 dark:border-gray-700"
+                      >
+                        {t("Positons", { position: index + 11 })} – {point}{" "}
+                        {t("Points", { count: point })}
+                      </p>
+                    )
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </ModalWrapper>

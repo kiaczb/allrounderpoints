@@ -1,4 +1,5 @@
 import "@cubing/icons";
+import { useTranslations } from "next-intl";
 
 interface EventCellProps {
   competition: any;
@@ -23,6 +24,8 @@ export default function EventCell({ competition, row }: EventCellProps) {
     ? row.best50Map.get(competition.competitionId)
     : undefined;
 
+  const t = useTranslations("EventCell");
+
   if (!bestResults) {
     return (
       <span className="text-gray-400 text-xs text-center col-span-2 py-2">
@@ -39,7 +42,9 @@ export default function EventCell({ competition, row }: EventCellProps) {
           className={`flex items-center ${
             eventResult.ranking >= 10 ? "gap-0.5" : "gap-1"
           } bg-white dark:bg-gray-800 rounded px-1.5 py-1.5 text-xs border border-gray-200 dark:border-gray-600 shadow-sm`}
-          title={`${eventResult.eventId}: ${eventResult.ranking}. helyezés`}
+          title={`${eventResult.eventId}: ${t("Positons", {
+            position: eventResult.ranking,
+          })}`}
         >
           <span
             className={`cubing-icon event-${

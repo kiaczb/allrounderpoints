@@ -13,6 +13,17 @@
     "TopPositions": "The top {POINTS_TABLE_LENGTH} will receive points in each event.",
     "CountingResults": "At the end of the series the final order will be decided based on the points awarded for each competitor's best {COUNTING_RESULTS} events.",
     "PodiumCount": " At the end of the series the top {PODIUM_COUNT} highest-ranked people will receive certificates and Cuboss giftcards.",
-    "Points": "Points"
+    "Points": "{count, plural, one {point} other {points}}",
+    "Positons": "{position, selectordinal, one {#st} two {#nd} few {#rd} other {#th}}"
+  },
+  "ResultsTable": {
+    "NoData": "No data to show."
+  },
+  "EventCell": {
+    "NoResult": "No result",
+    "Positons": "{position, selectordinal, one {#st} two {#nd} few {#rd} other {#th}} place"
+  },
+  "Errors": {
+    "FetchError": " An error occurred while fetching data:"
   }
 }

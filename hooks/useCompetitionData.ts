@@ -30,18 +30,35 @@ export default function useCompetitionData(
       if (getYearKey(competitionData) !== newYearKey) return;
 
       try {
-        const competitionIds = Object.keys(competitionData.ids);
+        const competitionIds = Object.keys(competitionData.ids ?? {});
 
-        const fetchedResults = await Promise.all(
+        const results = await Promise.allSettled(
           competitionIds.map(async (competitionId) => {
             const res = await fetch(
               `https://www.worldcubeassociation.org/api/v0/competitions/${competitionId}/wcif/public`,
               { next: { revalidate: 300 } }
             );
-            if (!res.ok) throw new Error(`Failed to fetch ${competitionId}`);
+
+            if (!res.ok) {
+              throw new Error(`Invalid competitionId: ${competitionId}`);
+            }
+
             return res.json();
           })
         );
+
+        // only successful fetches
+        const fetchedResults = results
+          .filter(
+            (r): r is PromiseFulfilledResult<any> => r.status === "fulfilled"
+          )
+          .map((r) => r.value);
+
+        //no successful fetches
+        if (fetchedResults.length === 0) {
+          setPeopleArray([]);
+          return;
+        }
 
         const personPositions = getPointsForARSeries(
           fetchedResults,

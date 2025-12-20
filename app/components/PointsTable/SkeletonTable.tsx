@@ -28,7 +28,6 @@ export default function SkeletonTable({
     setIsDarkMode(resolvedTheme === "dark");
   }, [resolvedTheme]);
 
-  // Addig ne rendereljünk semmit, amíg a komponens nincs mountolva
   if (!mounted) {
     return (
       <div className={className}>

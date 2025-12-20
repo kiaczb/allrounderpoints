@@ -1,4 +1,3 @@
-// app/page.tsx
 import { getTranslations } from "next-intl/server";
 import { allRounderIdsByYear, availableYears } from "../utils/competitionIds";
 import ResultsTable from "./components/PointsTable/ResultsTable";
@@ -23,7 +22,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <main className="min-h-screen">
-      <div className="mx-3 px-3 py-6 ">
+      <div className="mx-3 py-6 ">
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-2">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
