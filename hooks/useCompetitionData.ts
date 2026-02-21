@@ -1,9 +1,7 @@
 "use client";
-
 import { useState, useEffect } from "react";
-//import { getPointsForARSeries } from "@/utils/pointCalculator";
 import { AllRounderYearData } from "@/utils/competitionIds";
-import { getResults } from "@/utils/newPointCalculator";
+import { getResults } from "@/utils/pointCalculator";
 
 export default function useCompetitionData(
   competitionData: AllRounderYearData,
@@ -17,9 +15,8 @@ export default function useCompetitionData(
     return Object.keys(data.ids).sort().join("-");
   };
 
+  const newYearKey = getYearKey(competitionData);
   useEffect(() => {
-    const newYearKey = getYearKey(competitionData);
-
     if (newYearKey !== currentYearKey) {
       setPeopleArray([]);
       setCurrentYearKey(newYearKey);
@@ -64,13 +61,12 @@ export default function useCompetitionData(
         const personPositions = getResults(
           fetchedResults,
           competitionData.POINTS_TABLE,
+          competitionData.COUNTING_RESULTS,
         );
 
         const sortedPeople = Array.from(personPositions.values())
           .filter((p) => p.totalPoints > 0)
           .sort((a, b) => b.totalPoints - a.totalPoints);
-
-        console.log(sortedPeople);
 
         setPeopleArray(sortedPeople);
       } catch (err) {
@@ -82,7 +78,7 @@ export default function useCompetitionData(
     };
 
     fetchData();
-  }, [competitionData, currentYearKey]);
+  }, [newYearKey]);
 
   const getYearKeyForProps = () => getYearKey(competitionData);
 

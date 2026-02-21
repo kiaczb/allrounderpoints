@@ -1,3 +1,4 @@
+import { IEventResult } from "@/utils/pointCalculator";
 import EventCell from "./EventCell";
 
 interface ResultsTableRowProps {
@@ -32,13 +33,15 @@ export default function ResultsTableRow({
       <td className="px-3 py-3 font-bold text-blue-600 dark:text-blue-400 text-center whitespace-nowrap">
         {row.totalPoints}
       </td>
-      {Object.entries(competitionData.ids).map((_, compIndex) => {
-        const competition = row.bestResults.get(compIndex);
+      {Object.entries(competitionData.ids).map(([competitionId]) => {
+        const resultsForCompetition = row.bestResults
+          .toArray()
+          .filter((r: IEventResult) => r.competitionId === competitionId);
 
         return (
-          <td key={compIndex} className="px-2 py-2">
+          <td key={competitionId} className="px-2 py-2">
             <div className="grid grid-cols-2 gap-1.5 min-w-[85px] max-w-[100px] mx-auto">
-              <EventCell competition={competition} row={row} />
+              <EventCell results={resultsForCompetition} />
             </div>
           </td>
         );

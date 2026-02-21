@@ -1,9 +1,9 @@
+import { IEventResult } from "@/utils/pointCalculator";
 import "@cubing/icons";
 import { useTranslations } from "next-intl";
 
 interface EventCellProps {
-  competition: any;
-  row: any;
+  results: IEventResult[];
 }
 
 const getEventColor = (eventId: string) => {
@@ -19,14 +19,10 @@ const getEventColor = (eventId: string) => {
   }
 };
 
-export default function EventCell({ competition, row }: EventCellProps) {
-  const bestResults = competition
-    ? row.bestResults.get(competition.competitionId)
-    : undefined;
-
+export default function EventCell({ results }: EventCellProps) {
   const t = useTranslations("EventCell");
 
-  if (!bestResults) {
+  if (!results || results.length === 0) {
     return (
       <span className="text-gray-400 text-xs text-center col-span-2 py-2">
         -
@@ -36,7 +32,7 @@ export default function EventCell({ competition, row }: EventCellProps) {
 
   return (
     <>
-      {bestResults.map((eventResult: any, index: number) => (
+      {results.map((eventResult: any, index: number) => (
         <div
           key={index}
           className={`flex items-center ${
