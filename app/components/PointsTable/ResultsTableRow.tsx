@@ -25,7 +25,7 @@ export default function ResultsTableRow({
       <td className="px-3 py-2 text-center min-w-[120px] max-w-[180px] sm:max-w-[220px]">
         <div className="hyphens-auto">
           <span className="font-medium text-gray-900 dark:text-white ">
-            {row.person.name}
+            {row.name}
           </span>
         </div>
       </td>
@@ -33,7 +33,7 @@ export default function ResultsTableRow({
         {row.totalPoints}
       </td>
       {Object.entries(competitionData.ids).map((_, compIndex) => {
-        const competition = row.competitions.get(compIndex);
+        const competition = row.bestResults.get(compIndex);
 
         return (
           <td key={compIndex} className="px-2 py-2">

@@ -21,7 +21,7 @@ const getEventColor = (eventId: string) => {
 
 export default function EventCell({ competition, row }: EventCellProps) {
   const bestResults = competition
-    ? row.best50Map.get(competition.competitionId)
+    ? row.bestResults.get(competition.competitionId)
     : undefined;
 
   const t = useTranslations("EventCell");

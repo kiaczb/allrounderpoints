@@ -49,7 +49,7 @@ const ResultsTable = ({
             ) : (
               peopleArray.map((row, i) => (
                 <ResultsTableRow
-                  key={row.person.wcaId}
+                  key={row.wcaId}
                   row={row}
                   index={i}
                   competitionData={competitionData}
