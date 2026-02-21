@@ -14,11 +14,12 @@ export default async function Home({ searchParams }: HomeProps) {
   const t = await getTranslations("Home");
 
   const params = await searchParams;
-  const selectedYear = params.year || "2025";
+  const currentYear = new Date().getFullYear().toString();
+  const selectedYear = params.year || currentYear;
 
   const competitionData =
     allRounderIdsByYear[selectedYear as keyof typeof allRounderIdsByYear] ||
-    allRounderIdsByYear["2025"];
+    allRounderIdsByYear[currentYear as keyof typeof allRounderIdsByYear];
 
   return (
     <main className="min-h-screen">
